@@ -1,6 +1,11 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
+
+mongoose.connect('mongodb+srv://kevin:Password@cluster0.7scnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+let db = mongoose.connection
+
 
 const PORT = process.env.PORT || 3000
 
