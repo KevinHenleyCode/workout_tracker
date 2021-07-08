@@ -5,8 +5,11 @@ const path = require('path')
 const logger = require('morgan')
 const db = require('./models')
 
+
+
 // creates the PORT variable
 const PORT = process.env.PORT || 3001
+
 
 // middleware
 app.use(logger('dev'))
