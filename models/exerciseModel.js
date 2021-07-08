@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 
-const workout = mongoose.Schema ({
+
+const exerciseModel = new mongoose.Schema ({
     type: {
         type: String,
         required: true
@@ -28,3 +29,5 @@ const workout = mongoose.Schema ({
         type: Number
     }
 })
+
+module.exports = exerciseModel

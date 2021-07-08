@@ -2,15 +2,18 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
+const morgan = require('morgan')
+const db = require('./models')
 
-mongoose.connect('mongodb+srv://kevin:Password@cluster0.7scnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-let db = mongoose.connection
+const PORT = process.env.PORT || 3001
 
-
-const PORT = process.env.PORT || 3000
-
+// middleware
+app.use(logger('dev'))
+app.use(express.urlencoded({ extended: true}))
+app.use(express.json())
 app.use(express.static('public'))
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout_tracker', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true})
 app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 )
@@ -22,8 +25,6 @@ app.get('/stats', (req, res) =>
 app.get('/exercise', (req, res) =>
     res.sendFile(path.join(__dirname, 'public', 'exercise.html'))
 )
-
-
 
 
 
