@@ -18,7 +18,7 @@ router.get('/api/workouts', (req,res) => {
             totalWeight: {$sum: '$exercises.weight'}
         }
     }])
-    .then(results => {res.json(results)})
+    .then(dbWorkout => {res.json(dbWorkout)})
     .catch(error => {console.log(error)})
 })
 

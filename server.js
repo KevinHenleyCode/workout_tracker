@@ -15,7 +15,13 @@ app.use(express.static('public'))
 app.use(require('./routes/api_routes'))
 app.use(require('./routes/html_routes'))
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', 
+{ 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+})
 
 
 app.listen(PORT, () => console.log(`Server has started on Port: ${PORT}`))
