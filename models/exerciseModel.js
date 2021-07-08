@@ -3,8 +3,9 @@ const mongoose = require('mongoose')
 
 
 const exerciseModel = new mongoose.Schema ({
-    type: {
+    name: {
         type: String,
+        enum: ['resistance', 'cardio'],
         required: true
     },
 
